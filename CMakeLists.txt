@@ -7,8 +7,13 @@ find_package(glfw3 REQUIRED)
 
 add_executable(papEngine
   src/main.cpp
+
+  # engine
   src/engine/mesin_engine.cpp
+
+  # sistem
   src/sistem/window.cpp
+  src/sistem/input.cpp
 )
 
 target_link_libraries(papEngine glfw)

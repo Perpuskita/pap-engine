@@ -2,10 +2,12 @@
 #define MESIN_ENGINE_HPP
 
 #include "../sistem/window.hpp"
+#include "../sistem/input.hpp"
 
 class MesinGame {
   private:
     Window window;
+    Input input;
     bool berjalan;
 
   public:
