@@ -3,11 +3,13 @@
 
 #include "../sistem/window.hpp"
 #include "../sistem/input.hpp"
+#include "../rendering/renderer.hpp"
 
 class MesinGame {
   private:
     Window window;
     Input input;
+    Renderer renderer;
     bool berjalan;
 
   public:

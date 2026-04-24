@@ -19,3 +19,9 @@ make
 # jalankan programnya
 ./papEngine
 ````
+
+## Dev library
+
+- Glew -> Function OpenGL untuk Linux
+- Mesa -> Implementasi OpenGL Untuk Linux
+- Glu

@@ -4,6 +4,7 @@ project(papGame)
 set(CMAKE_CXX_STANDARD 20)
 
 find_package(glfw3 REQUIRED)
+find_package(OpenGL REQUIRED)
 
 add_executable(papEngine
   src/main.cpp
@@ -14,6 +15,9 @@ add_executable(papEngine
   # sistem
   src/sistem/window.cpp
   src/sistem/input.cpp
+
+  # rendering
+  src/rendering/renderer.cpp
 )
 
-target_link_libraries(papEngine glfw)
+target_link_libraries(papEngine glfw OpenGL GLEW)

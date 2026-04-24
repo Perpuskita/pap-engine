@@ -13,6 +13,10 @@ bool MesinGame::inisialisasi() {
 
   input.inisialisasi(window.handle);
 
+  if (!renderer.inisialisasi()) {
+    return false;
+  }
+
   berjalan = true;
   return true;
 }
@@ -60,7 +64,9 @@ void MesinGame::jalankan() {
       std::cout << "tombol A di gamepad ditekan";
     }
 
-    // TODO: untuk update dan render
+    renderer.clear();
+    renderer.render();
+
     window.update();
   }
 }
@@ -102,4 +108,7 @@ void MesinGame::status(){
 
 }
 
-void MesinGame::shutdown() { window.shutdown(); }
+void MesinGame::shutdown() { 
+  renderer.shutdown();
+  window.shutdown(); 
+}
