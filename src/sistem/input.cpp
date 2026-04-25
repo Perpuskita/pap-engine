@@ -47,12 +47,12 @@ void Input::update() {
 
       int axesCount;
       const float *axes = glfwGetJoystickAxes(GLFW_JOYSTICK_1, &axesCount);
-      xl_axis = axes[0];
-      yl_axis = axes[1];
-      xr_axis = axes[2];
-      yr_axis = axes[3];
-      l2_axis = axes[4];
-      r2_axis = axes[5];
+      axis_gamepad[XL_AXIS] = axes[XL_AXIS];
+      axis_gamepad[YL_AXIS] = axes[YL_AXIS];
+      axis_gamepad[XR_AXIS] = axes[XR_AXIS];
+      axis_gamepad[YR_AXIS] = axes[YR_AXIS];
+      axis_gamepad[L2_AXIS] = axes[L2_AXIS];
+      axis_gamepad[R2_AXIS] = axes[R2_AXIS];
       
       int buttonsCount;
       const unsigned char *buttons = glfwGetJoystickButtons(GLFW_JOYSTICK_1, &buttonsCount);
@@ -83,12 +83,12 @@ bool Input::gamepad_terkoneksi(){
 }
 
 void Input::cetak_axisgamepad(){
-    std::cout << "x axes left   : " << xl_axis << "\n";
-    std::cout << "y axes left   : " << yl_axis << "\n";
-    std::cout << "x axes right  : " << xr_axis << "\n";
-    std::cout << "y axes right  : " << yr_axis << "\n";
-    std::cout << "left trigger  : " << l2_axis << "\n";
-    std::cout << "right trigger : " << r2_axis << "\n";
+    std::cout << "x axes left   : " << axis_gamepad[XL_AXIS] << "\n";
+    std::cout << "y axes left   : " << axis_gamepad[YL_AXIS] << "\n";
+    std::cout << "x axes right  : " << axis_gamepad[XR_AXIS] << "\n";
+    std::cout << "y axes right  : " << axis_gamepad[XR_AXIS] << "\n";
+    std::cout << "left trigger  : " << axis_gamepad[L2_AXIS] << "\n";
+    std::cout << "right trigger : " << axis_gamepad[R2_AXIS] << "\n";
 }
 
 void Input::ambil_posisi_mouse(double &x, double &y) {

@@ -24,23 +24,27 @@ enum TombolGamepad{
   BUTTON_START = 7,
 };
 
+enum GamepadAxis{
+  XL_AXIS,
+  YL_AXIS,
+  XR_AXIS,
+  YR_AXIS,
+  L2_AXIS,
+  R2_AXIS
+};
+
 class Input {
 private:
   void *window_handle;
 
   std::unordered_map<int, bool> state_keyboard;
   std::unordered_map<int, bool> state_mouse;
-  std::unordered_map<int, bool> state_gamepad; 
+  std::unordered_map<int, bool> state_gamepad;
+  std::unordered_map<int, float> axis_gamepad;
   double posisi_mouse_x;
   double posisi_mouse_y;
 
   bool gamepad_connected;
-  float xr_axis;
-  float yr_axis;
-  float xl_axis;
-  float yl_axis;
-  float l2_axis;
-  float r2_axis;
 
   static void joystick_callback(int jid, int event);
 
