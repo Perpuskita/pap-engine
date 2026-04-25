@@ -18,6 +18,9 @@ add_executable(papEngine
 
   # rendering
   src/rendering/renderer.cpp
+
+  # camera
+  src/camera/camera.cpp
 )
 
 target_link_libraries(papEngine glfw OpenGL GLEW)

@@ -1,5 +1,7 @@
 #include "renderer.hpp"
 #include <GL/glew.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include <iostream>
 
 static unsigned int VAO, VBO;
@@ -9,8 +11,12 @@ static const char *vertex_shader_src = R"(
 #version 330 core
 layout (location = 0) in vec3 posisi;
 
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
+
 void main() {
-  gl_Position = vec4(posisi, 1.0);
+  gl_Position = projection * view * model * vec4(posisi, 1.0);
 }
 )";
 
@@ -87,8 +93,17 @@ void Renderer::clear() {
   glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void Renderer::render() {
+void Renderer::render(glm::mat4 model, glm::mat4 view, glm::mat4 projection) {
   glUseProgram(shader_program);
+
+  int loc_model = glGetUniformLocation(shader_program, "model");
+  int loc_view = glGetUniformLocation(shader_program, "view");
+  int loc_proj = glGetUniformLocation(shader_program, "projection");
+
+  glUniformMatrix4fv(loc_model, 1, GL_FALSE, glm::value_ptr(model));
+  glUniformMatrix4fv(loc_view, 1, GL_FALSE, glm::value_ptr(view));
+  glUniformMatrix4fv(loc_proj, 1, GL_FALSE, glm::value_ptr(projection));
+
   glBindVertexArray(VAO);
   glDrawArrays(GL_TRIANGLES, 0, 3);
 }
